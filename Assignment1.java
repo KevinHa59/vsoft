@@ -15,7 +15,7 @@ public class Assignment1 {
 		double pizzaCost = pizzaCalc(2, 399, 20); // 2 pizza, $399 each, discount 20%
 		System.out.println(pizzaCost);
 		System.out.println("-------------------------");
-		double tax = taxCalc(80000, 20); // salary: $80000, tax 20%
+		double tax = taxCalc(85000, 20); // salary: $80000, tax 20%
 		System.out.println(tax);
 	}
 	
