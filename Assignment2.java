@@ -1,9 +1,6 @@
-package assignment;
-
 public class Assignment2 {
-
-	public static void main(String[] args) {
-		q1();
+    public static void main(String[] args) {
+        q1();
         q2();
         q3();
         q4();
@@ -15,6 +12,9 @@ public class Assignment2 {
         q10();
         q11();
         q12();
+        isEvenNumber(6);
+        isOddNumber(7);
+        isLeapYear(2000);
         System.out.println("\n# Check Prime: " +isPrime(5));
         printEvenNumbers1to100();
         printPrimeNumbers1to100();
@@ -170,6 +170,31 @@ public class Assignment2 {
         }
     }
 
+    static void isEvenNumber(int num){
+        System.out.println("\n# Check Even Number of " + num);
+        if(num % 2 == 0) {
+            System.out.println("True");
+        } else {
+            System.out.println("False");
+        }
+    }
+    static void isOddNumber(int num){
+        System.out.println("\n# Check Odd Number of " + num);
+        if(num % 2 != 0) {
+            System.out.println("True");
+        } else {
+            System.out.println("False");
+        }
+    }
+    static void isLeapYear(int year){
+        System.out.println("\n# Check Leap Year of " + year);
+        if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            System.out.println("True");
+        } else {
+            System.out.println("False");
+        }
+    }
+
     static boolean isPrime(int n)
     {
         //System.out.println("\n# Check if " + n + " is prime number");
@@ -241,7 +266,7 @@ public class Assignment2 {
 
     static void factorial(int num){
         System.out.println("\n# Factorial " + num);
-        int result = (num == 0)? 1 : num;
+        int result = (num == 0) ? 1 : num;
         for(int i = num-1; i > 0; i--){
             result*=i;
         }
@@ -265,5 +290,6 @@ public class Assignment2 {
             System.out.print("False");
         }
     }
+
 
 }
