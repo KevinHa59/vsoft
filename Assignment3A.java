@@ -50,9 +50,8 @@ public class Assignment3A {
                 break;
             default:
                 System.out.println("Please number between 1-5 only");
-                mainMenu();
         }
-
+        mainMenu();
     }
 
     static void getInput(int kind, int priceEach){
@@ -60,7 +59,6 @@ public class Assignment3A {
         int qty = sc.nextInt();
         kind += qty;
         totalBill += qty * priceEach;
-        mainMenu();
     }
 
     static void displayBill(){
