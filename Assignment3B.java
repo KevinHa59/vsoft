@@ -2,6 +2,7 @@ package assignment;
 
 import java.util.Scanner;
 
+// Main Class
 public class Assignment3B {
     static int totalBill = 0;
 
@@ -67,6 +68,7 @@ public class Assignment3B {
     }
 }
 
+// Class Birayni
 class Birayni{
     static int chickenBnQty;
     static int chickenBnPrz = 8;
@@ -102,6 +104,7 @@ class Birayni{
     }
 }
 
+// Class Drinks
 class Drinks{
 
     static void drinksMenu(){
@@ -128,6 +131,7 @@ class Drinks{
     }
 }
 
+// Class Soft Drinks
 class SoftDrinks{
     static int spriteQty;
     static int spritePrz = 3;
@@ -157,6 +161,7 @@ class SoftDrinks{
     }
 }
 
+// Class Hot Drinks
 class HotDrinks{
     static int teaQty;
     static int teaPrz = 3;
@@ -186,6 +191,7 @@ class HotDrinks{
     }
 }
 
+// Class IceCream
 class IceCream{
     static int butterQty;
     static int butterPrz = 6;
