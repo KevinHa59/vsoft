@@ -49,6 +49,10 @@ public class StudentController {
 
     // delete student
     public boolean deleteStudent(String name){
+        if(searchStudent(name) == null){
+            return false;
+        }
+
         Student[] temp = new Student[students.length-1];
         int counter = 0;
         for(int i = 0; i<students.length; i++){
@@ -58,7 +62,7 @@ public class StudentController {
             }
         }
         students = temp;
-        return (counter == students.length);
+        return true;
     }
 
 }
