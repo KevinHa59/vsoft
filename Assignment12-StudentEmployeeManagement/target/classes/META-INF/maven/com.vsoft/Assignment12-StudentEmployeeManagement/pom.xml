@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.vsoft</groupId>
-  <artifactId>ProductManagementSession</artifactId>
+  <artifactId>Assignment12-StudentEmployeeManagement</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ProductManagementSession</name>
+  <name>Assignment12-StudentEmployeeManagement</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -33,12 +33,6 @@
 	    <artifactId>mysql-connector-java</artifactId>
 	    <version>8.0.17</version>
 	</dependency>
-	<!-- Lombok Dependency -->
-	<dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>1.18.22</version>
-		<scope>provided</scope>
-	</dependency>
+    
   </dependencies>
 </project>

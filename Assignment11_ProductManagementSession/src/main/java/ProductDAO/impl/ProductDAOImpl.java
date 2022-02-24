@@ -4,19 +4,17 @@ import ProductDAO.ProductDao;
 import Ultility.SessionUlitily;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import javax.persistence.Query;
 import pojo.Product;
 
 import java.util.List;
+
+
 
 public class ProductDAOImpl implements ProductDao {
 
     private Session ses = SessionUlitily.getSession();
     private Transaction tx;
-
-    public ProductDAOImpl() {
-
-    }
 
     public void addProduct(Product product) {
         ses = SessionUlitily.getSession();
@@ -37,7 +35,7 @@ public class ProductDAOImpl implements ProductDao {
         ses = SessionUlitily.getSession();
         Query query = ses.createQuery("from Product where id=:pId");
         query.setParameter("pId",id);
-        Product product = (Product) query.uniqueResult();
+        Product product = (Product) query.getSingleResult();
         ses.close();
         return product;
     }
@@ -45,7 +43,8 @@ public class ProductDAOImpl implements ProductDao {
     public boolean deleteProduct(int id) {
         ses = SessionUlitily.getSession();
         tx = ses.beginTransaction();
-        Query query = ses.createQuery("delete from Product where id=:pId");
+       
+		Query query = ses.createQuery("delete from Product where id=:pId");
         query.setParameter("pId", id);
         int count = query.executeUpdate();
         tx.commit();
