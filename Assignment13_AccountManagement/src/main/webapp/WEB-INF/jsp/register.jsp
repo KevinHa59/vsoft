@@ -28,14 +28,14 @@
         }
         .form{
             width: 100%;
-            height: 500px;
+            height: max-content;
             border: 1px solid #fff;
             background: white;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 2px;
         }
         .header{
             margin-top: 50px;
@@ -96,7 +96,11 @@
 
         <form:form cssClass="form" action="/adduser" modelAttribute="user">
             <div class="header">Register</div>
-            <input type="text" placeholder="Full Name" name="name" value="" onclick="this.value=''"/><br/>
+            <input type="text" placeholder="First Name" name="firstName" value="" onclick="this.value=''"/><br/>
+            <input type="text" placeholder="Last Name" name="lastName" value="" onclick="this.value=''"/><br/>
+            <input type="text" placeholder="Email" name="email" value="" onclick="this.value=''"/><br/>
+            <input type="text" placeholder="Phone" name="phone" value="" onclick="this.value=''"/><br/>
+            <input type="text" placeholder="Address" name="address" value="" onclick="this.value=''"/><br/>
             <input type="text" placeholder="Username" name="username"  value="" onclick="this.value=''"/><br/>
             <input type="password" placeholder="Password" name="password"  value="" onclick="this.value=''"/><br/>
             <button type="submit" value="Register">Register</button>

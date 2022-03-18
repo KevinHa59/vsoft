@@ -5,25 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String address;
-    private String username;
-    private String password;
+    private String name;
+    private String author;
+    private Double price;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private List<Book> books;
+    private User user;
 }

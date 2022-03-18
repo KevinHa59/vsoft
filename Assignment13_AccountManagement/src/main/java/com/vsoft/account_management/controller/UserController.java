@@ -1,6 +1,8 @@
 package com.vsoft.account_management.controller;
 
+import com.vsoft.account_management.model.Book;
 import com.vsoft.account_management.model.User;
+import com.vsoft.account_management.service.BookService;
 import com.vsoft.account_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +20,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/all")
-    public String loadUserList(Model model){
-        List<User> allUser = userService.getUsers();
-        model.addAttribute("users", allUser);
-        return "users";
-    }
+    @Autowired
+    private BookService bookService;
+
+    @Autowired
+    private BookController bookController;
 
     @GetMapping("")
     public String loadForm(Model model){
@@ -41,14 +42,17 @@ public class UserController {
         User _user = userService.Login(user.getUsername(), user.getPassword());
 
         if(_user != null){
-            msg = "Login Successful";
+
+            return "redirect:/book";
         }else  {
             msg = "Login fail";
+            model.addAttribute("msg",msg);
+            return "login";
         }
-        model.addAttribute("msg",msg);
+    }
 
-        model.addAttribute("user", _user);
-
+    @GetMapping("/logout")
+    public String logout(){
         return "login";
     }
 //

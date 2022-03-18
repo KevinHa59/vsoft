@@ -105,7 +105,6 @@
                 <a href="/all">View All Users</a>
             </div>
             <h3>${msg}</h3><br/>
-            <h3>${user.name}</h3>
         </form>
     </div>
 </div>
