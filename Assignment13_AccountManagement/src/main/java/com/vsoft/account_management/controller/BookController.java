@@ -20,18 +20,29 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private UserService userService;
     @GetMapping("")
     public String loadBookForm(Model model){
-
-        List<Book> books = bookService.getBooks();
-        model.addAttribute("books", books);
-
+        UserData.user = userService.findUserById(UserData.user.getId());
+        List<Book> userBooks = UserData.user.getBooks();
+        List<Book> allBooks = bookService.getBooks();
+        model.addAttribute("books", userBooks);
+        model.addAttribute("allBooks", allBooks);
+        model.addAttribute("user", UserData.user);
         return "/book";
     }
 
+
     @PostMapping("/add")
-    public String addBook(@ModelAttribute Book book){
-         bookService.addBook(book);
+    public String addBook(@ModelAttribute Book book, Model model){
+//        book.setUser(UserData.user);
+        List<Book> userBooks = UserData.user.getBooks();
+        model.addAttribute("books", userBooks);
+        Book b = bookService.addBook(book);
+        UserData.user.getBooks().add(b);
+        userService.Register(UserData.user);
+
         return "redirect:/book";
     }
 
@@ -42,11 +53,17 @@ public class BookController {
 
     @GetMapping(value = "/{id}")
     public String updateForm(@PathVariable("id") Long id, Model model){
-        List<Book> books = bookService.getBooks();
-        model.addAttribute("books", books);
+
         Book book = bookService.findBookById(id);
-        System.out.println(book);
+
+
+        List<Book> books = UserData.user.getBooks();
+        List<Book> allBooks = bookService.getBooks();
+
+        model.addAttribute("books", books);
+        model.addAttribute("user", UserData.user);
         model.addAttribute("bookData", book);
+        model.addAttribute("allBooks", allBooks);
         return "/book";
 
     }
@@ -54,6 +71,7 @@ public class BookController {
     @PostMapping("/update/{id}")
     public String updateBook(@ModelAttribute Book book, @PathVariable("id") Long id, Model model){
         book.setId(id);
+        book.setUser(UserData.user);
         bookService.updateBook(book);
         return "redirect:/book";
     }

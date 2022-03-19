@@ -13,10 +13,13 @@
             padding: 0;
 
         }
+        body{
+            background: #102034;
+        }
         .MainContainer{
             width: 100%;
             height: 100vh;
-            background: #102034;
+
             display: flex;
             justify-content: center;
         }
@@ -25,9 +28,12 @@
             height: 80%;
 
             display: flex;
-
+            flex-direction: column;
+            gap: 20px;
         }
         .form{
+            margin-top: 20px;
+            padding-top: 20px;
             width: 100%;
             height: max-content;
             border: 1px solid #fff;
@@ -40,8 +46,8 @@
         }
         .navBar{
             width: 90%;
-            text-align: right;
-
+            display: flex;
+            justify-content: space-between;
         }
         .headerContainer{
             margin-top: 50px;
@@ -85,28 +91,24 @@
         }
     </style>
     <script>
-        let books = '${books}';
-        console.log(books.length);
+
     </script>
 
 </head>
 <body>
 <div class="MainContainer">
    <div class="formContainer">
-
+<%--User Book--%>
        <div class="form">
-           <div class="navBar">${user.firstName}<a href="/logout">Logout</a></div>
+           <div class="navBar">Welcome ${user.firstName}<a href="/logout">Logout</a></div>
            <div class="headerContainer">
                <div class="header widthC50">Name</div>
                <div class="header widthC20">Author</div>
                <div class="header widthC10">Price</div>
-
            </div>
-
            <div class="inputContainer">
 
            <form:form action="/book/add" modelAttribute="book">
-
                    <input  class="widthC50" name="name" type="text" placeholder="Book Name"/>
                    <input  class="widthC20" name="author" type="text" placeholder="Author"/>
                    <input   class="widthC10" name="price" type="text" placeholder="Price"/>
@@ -129,10 +131,33 @@
                        <div class="widthC20">${books.author}</div>
                        <div class="widthC10">$${books.price}</div>
                        <div class="widthC20">
-                           <a href="/book/${books.id}" class="edit" onclick="toggle(true)">Update</a>
+                           <a href="/book/${books.id}" class="edit">Update</a>
                            <a href="/book/delete/${books.id}" class="delete">Delete</a>
                        </div>
 
+                   </div>
+
+               </c:forEach>
+           </div>
+       </div>
+<%--        All Book--%>
+       <div class="form">
+           <div class="navBar">All Books</div>
+           <div class="headerContainer">
+               <div class="header widthC50">Name</div>
+               <div class="header widthC20">Author</div>
+               <div class="header widthC10">Price</div>
+               <div class="header widthC10">Posted By</div>
+           </div>
+
+
+           <div class="bodyContainer">
+               <c:forEach var="allBooks" items="${allBooks}">
+                   <div class="bodyItem">
+                       <div class="widthC50">${allBooks.name}</div>
+                       <div class="widthC20">${allBooks.author}</div>
+                       <div class="widthC10">$${allBooks.price}</div>
+                       <div class="widthC20">${allBooks.user.firstName} ${allBooks.user.lastName}</div>
                    </div>
 
                </c:forEach>

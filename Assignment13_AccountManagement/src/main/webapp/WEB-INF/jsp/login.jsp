@@ -101,8 +101,7 @@
             <button type="submit" value="Login">Submit</button>
 
             <div class="LinkContainer">
-                <a href="/register">Register</a> |
-                <a href="/all">View All Users</a>
+                <a href="/register">Register</a>
             </div>
             <h3>${msg}</h3><br/>
         </form>

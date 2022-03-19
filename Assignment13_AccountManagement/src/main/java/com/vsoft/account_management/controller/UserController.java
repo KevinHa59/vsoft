@@ -7,10 +7,7 @@ import com.vsoft.account_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -34,16 +31,23 @@ public class UserController {
         return "login";
     }
 
-
+    @GetMapping("/user/all")
+    public List<User> getAllUsers(){
+        return userService.getUsers();
+    }
 
     @GetMapping("/login")
     public String login(@ModelAttribute User user, Model model){
         String msg = "";
         User _user = userService.Login(user.getUsername(), user.getPassword());
-
+        List<Book> books = _user.getBooks();
+        List<Book> allBooks = bookService.getBooks();
         if(_user != null){
-
-            return "redirect:/book";
+            model.addAttribute("user",_user);
+            model.addAttribute("books",books);
+            model.addAttribute("allBooks",allBooks);
+            UserData.user = _user;
+            return "/book";
         }else  {
             msg = "Login fail";
             model.addAttribute("msg",msg);
